@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>用webpack搭建react | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="1. React简介 React 起源于Facebook的内部项目，因为该公司对市场，上所有JavaScript MVC框架，都不满意,就决定自 己写一套，用来架设Instagram (照片交友)的网站。做出来以后，发现这套东西很好用，就在2013年5月开源了。  由于React的设计思想极其独特，属于革命性创新,性能出众，代码逻辑却非常简单。所以，越来越多的人开 始关注和使用，认为它可能是将来W">
+<meta property="og:type" content="article">
+<meta property="og:title" content="用webpack搭建react">
+<meta property="og:url" content="http://yoursite.com/2020/02/22/%E5%88%9D%E8%AF%86react/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="1. React简介 React 起源于Facebook的内部项目，因为该公司对市场，上所有JavaScript MVC框架，都不满意,就决定自 己写一套，用来架设Instagram (照片交友)的网站。做出来以后，发现这套东西很好用，就在2013年5月开源了。  由于React的设计思想极其独特，属于革命性创新,性能出众，代码逻辑却非常简单。所以，越来越多的人开 始关注和使用，认为它可能是将来W">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-02-22T12:15:25.000Z">
+<meta property="article:modified_time" content="2020-02-22T12:25:43.646Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-初识react" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/02/22/%E5%88%9D%E8%AF%86react/" class="article-date">
+  <time datetime="2020-02-22T12:15:25.000Z" itemprop="datePublished">2020-02-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      用webpack搭建react
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="1-React简介"><a href="#1-React简介" class="headerlink" title="1. React简介"></a>1. React简介</h3><ul>
+<li><p>React 起源于Facebook的内部项目，因为该公司对市场，上所有JavaScript MVC框架，都不满意,就决定自<br> 己写一套，用来架设Instagram (照片交友)的网站。做出来以后，发现这套东西很好用，就在<strong>2013年5月开源了</strong>。</p>
+</li>
+<li><p>由于React的<strong>设计思想极其独特</strong>，属于革命性创新,性能出众，代码逻辑却非常简单。所以，越来越多的人开<br> 始关注和使用，认为它可能是将来Web开发的主流工具。</p>
+</li>
+<li><p>清楚两个概念:</p>
+</li>
+<li><ul>
+<li>library (库) :    小而巧的是库, 只提供了特定的 API; 优点就是 船小好掉头, 可以很方便的从一个库切换到另外的库; 但是代码几乎不会改变;</li>
+<li>Framework (框架) : 大而全的是框架; 框架提供了一整套的解决方案; 所以, 如果在项目中间, 像切换到另外的框架, 是比较困难的;</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-前端三大主流框架"><a href="#2-前端三大主流框架" class="headerlink" title="2.前端三大主流框架"></a>2.前端三大主流框架</h3><blockquote>
+<p>三大框架一大抄</p>
+</blockquote>
+<ul>
+<li>Angular.js: 出来<strong>较早</strong>的前端框架，学习曲线比较陡，NG1学起来比较麻烦，NG2 ~ NG5开始，进行了一系列<br> 的改革，也提供了组件化开发的概念;从NG2开始，也支持使用TS (TypeScript) 进行编程;</li>
+<li>Vue,js:<strong>最火的</strong>一门前端框架，它是中国人开发的，对我我们来说，文档要友好一 些;</li>
+<li>React.js: <strong>最流行的</strong>一门框架，因为它的设计很优秀;</li>
+</ul>
+<h3 id="3-React-与-vue-的对比"><a href="#3-React-与-vue-的对比" class="headerlink" title="3. React 与 vue 的对比"></a>3. React 与 vue 的对比</h3><h4 id="组件化方面"><a href="#组件化方面" class="headerlink" title="组件化方面"></a>组件化方面</h4><ol>
+<li>什么是模块化:是从代码的角度来进行分析的;把一些可复 用的代码，抽离为单个的模块;便于项目的维护和<br> 开发;</li>
+<li>什么是组件化:是从UI界面的角度来进行分析的;把一些可服用的UI元素,抽离为单独的组件;便于项目<br> 的维护和开发;</li>
+<li>组件化的好处:随着项目规模的增大，手里的组件越来越多;很方便就能把现有的组件，拼接为一个完整的页<br> 面;</li>
+<li>Vue是如何实现组件化的:通过. vue文件,来创建对应的组件;</li>
+</ol>
+<ul>
+<li><ul>
+<li>template   结构</li>
+<li>script         行为</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>style           样式</li>
+</ul>
+<ol>
+<li>React如何实现组件化:大家注意, React中有组件化的概念, 但是,并没有像vue这样的组件模板文件;<br> React中，- -切都是以S来表现的;因此要学习React, JS要合格; ES6 和ES7 (async 和await)要会用; .</li>
+</ol>
+<h4 id="开发团队方面"><a href="#开发团队方面" class="headerlink" title="开发团队方面"></a>开发团队方面</h4><ul>
+<li>React是由FaceBook前端官方团队进行维护和更新的; 因此，React的维护开发团队，技术实力比较雄厚;</li>
+<li>Vue:第一版，主要是有作者尤雨溪专门进行维护的，当Vue更新到2.x版本后，也有了一个以尤雨溪为主导的开源小团队，进行相关的开发和维护;</li>
+</ul>
+<h4 id="社区方面"><a href="#社区方面" class="headerlink" title="社区方面"></a>社区方面</h4><ul>
+<li>在社区方面，React由于诞生的较早,所以社区比较强大，- -些常见的问题、坑、最优解决方案，文档、博客在社区中都是可以很方便就能找到的;</li>
+<li>Vue是近两年才火起来的，所以，它的社区相对于React来说，要小- -些,可能有的一些坑，没人踩过;</li>
+</ul>
+<h4 id="移动APP开发体验方面"><a href="#移动APP开发体验方面" class="headerlink" title="移动APP开发体验方面"></a>移动APP开发体验方面</h4><ul>
+<li>Vue,结合Weex这门技术, 提供了迁移到移动端App开发的体验(Weex, 目前只是一 个小的玩具，并没<br> 有很成功的大案例; )</li>
+<li>React, 结合ReactNative, 也提供了无缝迁移到移动App的开发体验(RN用的最多，也是最火最流行的) ;</li>
+</ul>
+<h3 id="4-为什么要学习React"><a href="#4-为什么要学习React" class="headerlink" title="4.为什么要学习React"></a>4.为什么要学习React</h3><ol>
+<li>和Angular1相比，React设计很优秀, -切基于JS并且实现了组件化开发的思想;</li>
+<li>开发团队实力强悍，不必担心断更的情况;</li>
+<li>社区强大,很多问题都能找到对应的解决方案;</li>
+<li>提供了无缝转到 ReactNative. 上的开发体验，让我们技术能力得到了拓展;增强了我们的核心竞争力;</li>
+<li>很多企业中，前端项目的技术选型采用的是React.js;</li>
+</ol>
+<h3 id="5-React中几个核心的概念"><a href="#5-React中几个核心的概念" class="headerlink" title="5.React中几个核心的概念"></a>5.React中几个核心的概念</h3><h4 id="虚拟DOM-Virtual-Document-Object-Model"><a href="#虚拟DOM-Virtual-Document-Object-Model" class="headerlink" title="虚拟DOM (Virtual Document Object Model)"></a>虚拟DOM (Virtual Document Object Model)</h4><ul>
+<li><p><strong>DOM的本质是什么</strong>: 浏览器中的概念，用JS对象来表示 页面上的元素，并提供了操作DOM对象的API;</p>
+</li>
+<li><p><strong>什么是React中的虚拟DOM</strong>:  是框架中的概念,  是程序员 用JS对象来模拟页面上的DOM和DOM嵌套;</p>
+</li>
+<li><p><strong>为什么要实现虚拟DOM (虛拟DOM的目的)</strong>: 为了实现页面中，DOM 元素的高效更新</p>
+</li>
+<li><p>DOM和虚拟DOM的区别:</p>
+</li>
+<li><ul>
+<li>DOM: 浏览器中, 提供的概念; 用 JS 对象, 表示页面上的元素,并提供了操作元素的ApI;</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id&#x3D;&quot;mydiv&quot; title&#x3D;&quot;is good&quot; data-index&#x3D;&quot;0&quot;&gt;</span><br><span class="line">    hello world</span><br><span class="line">      &lt;p&gt;welcome to my blogs&lt;&#x2F;p&gt;</span><br><span class="line">  &lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li><p>虚拟DOM: 是框架中的概念; 是开发框架的程序员, 手动用JS 对象来模拟DOM元素和嵌套关系;</p>
+</li>
+<li><ul>
+<li>就是 React 中 虚拟概念;</li>
+<li>本质: 用 JS 对象, 来模拟 DOM 元素和嵌套关系;</li>
+<li>目的: 就是为了实现页面元素的高效更新;</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">var div &#x3D; &#123;</span><br><span class="line">      tagName: &#39;div&#39;,</span><br><span class="line">      attrs: &#123;</span><br><span class="line">          id: &#39;mydiv&#39;,</span><br><span class="line">          title: &#39;is good&#39;,</span><br><span class="line">          data-index: &#39;1&#39;</span><br><span class="line">      &#125;,</span><br><span class="line">      childrens: [</span><br><span class="line">          &#39;hello world&#39;,</span><br><span class="line">          &#123;</span><br><span class="line">              tageName: &#39;p&#39;,</span><br><span class="line">              attrs: &#123;&#125;,</span><br><span class="line">              childrens: [</span><br><span class="line">                  &#39;welcome to my blogs&#39;</span><br><span class="line">              ]</span><br><span class="line">          &#125;</span><br><span class="line">      ]</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>一个网页呈现的过程:</strong></p>
+<ol>
+<li>浏览器请求服务器获取页面HTML代码</li>
+<li>浏览器要先在内存中, 解析 DOM 结构, 并在浏览器内存中, 渲染出一颗 DOM 书;</li>
+<li>浏览器把 DOM 树,呈现到页面上;</li>
+</ol>
+<h4 id="diff算法"><a href="#diff算法" class="headerlink" title="diff算法"></a>diff算法</h4><ul>
+<li><p><strong>tree diff:</strong> 新旧两颗DOM树,逐层对比的过程,就是 Tree Diff; 当整个 DOM逐层对比完毕, 则所有需要被按需更新的元素,必然能找到;</p>
+</li>
+<li><p><strong>component diff:</strong> 在进行Tree Diff的时候, 每一层中,组件级别的对比,叫做 Component Diff;</p>
+</li>
+<li><ul>
+<li>如果对比前后, 组件类型相同 ,则暂时认为此组件不需要更新;</li>
+<li>不过对比前后, 组件类型不同,则需要移除旧组件, 创建新组建, 并追加到页面上;</li>
+</ul>
+</li>
+<li><p><strong>element diff:</strong> 在进行组件对比的时候, 如果两个组件类型相同, 则需要进行 元素级别对的 对比, 这叫做 Element Diff;</p>
+</li>
+</ul>
+<p>webpack 自动打包工具  <code>npm install --save-dev webpack-dev-server</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;dev&quot;: &quot;webpack-dev-server --open --port 3000 --hot --host 127.0.0.1&quot;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="6-创建基本的webpack4-x项目"><a href="#6-创建基本的webpack4-x项目" class="headerlink" title="6.创建基本的webpack4.x项目"></a>6.创建基本的webpack4.x项目</h3><ol>
+<li>运行<code>npm init -y</code> 快速初始化项目</li>
+<li>在项目根目录创建<code>src</code>源代码目录和<code>dist</code>产品目录</li>
+<li>在src目录下创建<code>index.html</code></li>
+<li>使用cnpm安装webpack，运行<code>cnpm i -D webpack webpack-cli</code></li>
+</ol>
+<ul>
+<li><ul>
+<li>如何安装<code>cnpm</code>: 全局运行<code>npm i -g cnpm</code></li>
+</ul>
+</li>
+</ul>
+<ol>
+<li>注意: webpack 4.x提供了约定大于配置的概念;目的是为了尽量减少配置文件的体积;</li>
+</ol>
+<ul>
+<li><ul>
+<li>默认约定了:</li>
+<li>打包的入口是<code>src</code> -&gt; <code>index.js</code></li>
+<li>打包的输出文件是<code>dist</code> -&gt; <code>mairpjs</code></li>
+<li>4.x中新增了<code>mode</code> 选项(为必选项)，可选的值为: <code>development</code> 和 <code>production</code>;</li>
+</ul>
+</li>
+</ul>
+<h3 id="7-在项目中使用react"><a href="#7-在项目中使用react" class="headerlink" title="7.在项目中使用react"></a>7.在项目中使用react</h3><ol>
+<li>运行 <code>npm i -S react react-dom</code> 安装包</li>
+</ol>
+<ul>
+<li><ul>
+<li><strong>react:</strong> 专门用于创建组件和虚拟DOM的，同时组件的生命周期都在这个包中</li>
+<li><strong>react-dom:</strong> 专门进行DOM操作的， 最主要的应用场景，就是ReactDOM. render()</li>
+</ul>
+</li>
+</ul>
+<ol>
+<li>在index. html页面中，创建容器:</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--容器，将来，使用React创建的虚拟DOM元素，都会被渲染到这个指定的容器中--&gt;</span><br><span class="line">&lt;div id&#x3D;&quot;app&quot;&gt;&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<ol>
+<li>导入包:</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import React from &#39; react &#39;</span><br><span class="line">import ReactDOM from &#39; react- dom &#39;</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>创建虚拟DOM元素:</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 参数1: 创建的元素的类型, 字符串, 表示元素的名称</span><br><span class="line">&#x2F;&#x2F; 参数2: 是一个 对象 或 null, 来表示当前DOM 元素的属性</span><br><span class="line">&#x2F;&#x2F; 参数3: 子节点(包括 其他 虚拟DOM 获取 文本子节点)</span><br><span class="line">&#x2F;&#x2F; 参数n: 其他子节点</span><br><span class="line">&#x2F;&#x2F; &lt;h1 id&#x3D;&quot;myh1&quot; title&#x3D;&quot;this is a h1&quot;&gt;这是一个h1标签&lt;&#x2F;h1&gt;</span><br><span class="line">const myh1 &#x3D; React.createElement(&#39;h1&#39;, &#123;id: &#39;myh1&#39;, title: &#39;this is a h1&#39;&#125;, &#39;这是一个h1标签&#39;)</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>5.渲染:</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 3. 渲染虚拟DOM元素</span><br><span class="line">&#x2F;&#x2F; 参数1: 表示要渲染的虚拟DOM对象</span><br><span class="line">&#x2F;&#x2F; 参数2: 指定容器,注意:这里不能直接放容器元素的Id字符串，需要放一个容器的DOM对象</span><br><span class="line">ReactDOM.render(myh1, document.querySelector(&#39;#app&#39;))</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/02/22/%E5%88%9D%E8%AF%86react/" data-id="ck6xkyfmn000hy4uf8txv9u66" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/02/22/%E7%94%A8webpack%E6%90%AD%E5%BB%BAreact/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          用webpack搭建react
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/02/21/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%9A%84%E6%90%AD%E5%BB%BA/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">个人博客的搭建</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0/">语言学习</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">正则表达式</a></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/NET/" rel="tag">.NET</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" rel="tag">正则表达式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB/" rel="tag">网络爬虫</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%A7%86%E9%A2%91%E6%95%99%E7%A8%8B/" rel="tag">视频教程</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/NET/" style="font-size: 10px;">.NET</a> <a href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" style="font-size: 10px;">正则表达式</a> <a href="/tags/%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB/" style="font-size: 10px;">网络爬虫</a> <a href="/tags/%E8%A7%86%E9%A2%91%E6%95%99%E7%A8%8B/" style="font-size: 10px;">视频教程</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/02/22/webpack%E7%9A%84%E7%AE%80%E5%8D%95%E8%AE%A4%E8%AF%86/">webpack的简单认识</a>
+          </li>
+        
+          <li>
+            <a href="/2020/02/22/%E6%B7%B7%E5%90%88%E5%BC%80%E5%8F%91/">混合开发</a>
+          </li>
+        
+          <li>
+            <a href="/2020/02/22/%E7%94%A8webpack%E6%90%AD%E5%BB%BAreact/">用webpack搭建react</a>
+          </li>
+        
+          <li>
+            <a href="/2020/02/22/%E5%88%9D%E8%AF%86react/">用webpack搭建react</a>
+          </li>
+        
+          <li>
+            <a href="/2020/02/21/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%9A%84%E6%90%AD%E5%BB%BA/">个人博客的搭建</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

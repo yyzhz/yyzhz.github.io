@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>webpack的简单认识 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="webpack现代化前端最流行的一款 构建打包工具 前端构建打包工具的发展史 grunt gulp fis  (百度推出的一款构建打包工具) webpack …  webpack 打包构建原理基于某个入口文件, 分析这个文件中的依赖. 然后继续向下寻找依赖的依赖, 循环往复, 最后没有依赖了, 把找到的全部都打包到一起. webpack 核心 entry(入口) output(出口) loader">
+<meta property="og:type" content="article">
+<meta property="og:title" content="webpack的简单认识">
+<meta property="og:url" content="http://yoursite.com/2020/02/22/webpack%E7%9A%84%E7%AE%80%E5%8D%95%E8%AE%A4%E8%AF%86/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="webpack现代化前端最流行的一款 构建打包工具 前端构建打包工具的发展史 grunt gulp fis  (百度推出的一款构建打包工具) webpack …  webpack 打包构建原理基于某个入口文件, 分析这个文件中的依赖. 然后继续向下寻找依赖的依赖, 循环往复, 最后没有依赖了, 把找到的全部都打包到一起. webpack 核心 entry(入口) output(出口) loader">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-02-22T12:15:25.000Z">
+<meta property="article:modified_time" content="2020-02-22T12:21:33.992Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-webpack的简单认识" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/02/22/webpack%E7%9A%84%E7%AE%80%E5%8D%95%E8%AE%A4%E8%AF%86/" class="article-date">
+  <time datetime="2020-02-22T12:15:25.000Z" itemprop="datePublished">2020-02-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      webpack的简单认识
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="webpack"><a href="#webpack" class="headerlink" title="webpack"></a>webpack</h2><p>现代化前端最流行的一款 构建打包工具</p>
+<h2 id="前端构建打包工具的发展史"><a href="#前端构建打包工具的发展史" class="headerlink" title="前端构建打包工具的发展史"></a>前端构建打包工具的发展史</h2><ol>
+<li>grunt</li>
+<li>gulp</li>
+<li>fis  (百度推出的一款构建打包工具)</li>
+<li>webpack</li>
+<li>…</li>
+</ol>
+<h2 id="webpack-打包构建原理"><a href="#webpack-打包构建原理" class="headerlink" title="webpack 打包构建原理"></a>webpack 打包构建原理</h2><p>基于某个入口文件, 分析这个文件中的依赖. 然后继续向下寻找依赖的依赖, 循环往复, 最后没有依赖了, 把找到的全部都打包到一起.</p>
+<h2 id="webpack-核心"><a href="#webpack-核心" class="headerlink" title="webpack 核心"></a>webpack 核心</h2><ol>
+<li>entry(入口)</li>
+<li>output(出口)</li>
+<li>loaders(转换器) - webpack 将依赖都看成一个一个的模块. 但是默认情况只能是写 js 与 json 两种格式的模块. 如果想要打包 图片, 样式等资源的话, 就需要相应的loader 转换器来进行转换操作, 转换后 webpack 才能识别.</li>
+<li>plugins (插件) - 有些操作转换器也实现不了, 这时就可以交给插件来实现. 比如说要将某个文件直接复制到出口文件等操作.</li>
+<li>mode (打包模式 4.x 版本之后提供的) - 开发 | 生产</li>
+</ol>
+<h2 id="webpack-简单使用"><a href="#webpack-简单使用" class="headerlink" title="webpack 简单使用"></a>webpack 简单使用</h2><ol>
+<li>创建 webpack-demo</li>
+<li>初始化</li>
+<li>安装 webpack  和  webpack-cli</li>
+</ol>
+<h2 id="运行-webpack-命令来打包"><a href="#运行-webpack-命令来打包" class="headerlink" title="运行 webpack 命令来打包"></a>运行 webpack 命令来打包</h2><p>一、全局安装了 webpack 之后，可以直接在项目下使用 webpack 命令即可。</p>
+<p>二、项目的本地安装</p>
+<ol>
+<li>./node_modules/.bin/webpack</li>
+<li>使用 npx webpack</li>
+<li>npm 脚本方式</li>
+</ol>
+<p>默认的入口文件是： src/index.js</p>
+<p>默认的出口文件是： dist/main.js</p>
+<p>如果你的入口文件或出口文件不是默认的文件的话。</p>
+<p>可以通过  –entry 选项来告诉它使用哪个入口文件</p>
+<p>–output 选项来告诉它使用哪个出口文件</p>
+<p>不推荐使用选项的方式来控制，推荐是用配置文件的方式：(webpack.config.js)</p>
+<h2 id="一、自动帮我们生成-dist-index-html"><a href="#一、自动帮我们生成-dist-index-html" class="headerlink" title="一、自动帮我们生成 dist / index.html"></a>一、自动帮我们生成 dist / index.html</h2><p>使用一款插件，html-webpack-plugin</p>
+<ol>
+<li>安装插件</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save-dev html-webpack-plugin</span><br></pre></td></tr></table></figure>
+
+
+
+<ol>
+<li>配置插件</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">plugins: [</span><br><span class="line">  new HtmlWebpackPlugin(&#123;</span><br><span class="line">    &#x2F;&#x2F; 可以传递一个template选项，来控制使用哪个模板页面来生成</span><br><span class="line">    template: path.resolve(__dirname, &#39;.&#x2F;public&#x2F;index.html&#39;)</span><br><span class="line">  &#125;)</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="二、将public文件夹里面的内容直接复制到dist文件夹中。"><a href="#二、将public文件夹里面的内容直接复制到dist文件夹中。" class="headerlink" title="二、将public文件夹里面的内容直接复制到dist文件夹中。"></a>二、将public文件夹里面的内容直接复制到dist文件夹中。</h2><p>使用一款插件，copy-webpack-plugin</p>
+<ol>
+<li>安装插件</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save-dev copy-webpack-plugin</span><br></pre></td></tr></table></figure>
+
+
+
+<ol>
+<li>配置插件</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">plugins: [</span><br><span class="line">  new CopyWebpackPlugin([</span><br><span class="line">    &#123;</span><br><span class="line">      &#x2F;&#x2F; 将 public 文件夹中的文件内容，全部拷贝至 出口文件夹中</span><br><span class="line">      from: path.resolve(__dirname, &#39;.&#x2F;public&#39;)</span><br><span class="line">    &#125;</span><br><span class="line">  ])</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="三、引入css样式"><a href="#三、引入css样式" class="headerlink" title="三、引入css样式"></a>三、引入css样式</h2><p>需要两个转换器：style-loader | css-loader</p>
+<p>css-loader: 将css文件转换成 webpack 能够识别的模块文件</p>
+<p>style-loader: 将css写入到html页面的style标签中</p>
+<ol>
+<li>安装需要的转换器</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -D style-loader css-loader</span><br></pre></td></tr></table></figure>
+
+
+
+<ol>
+<li>配置转换器规则</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">module: &#123;</span><br><span class="line">    &#x2F;&#x2F; 转换器的配置，规则</span><br><span class="line">    rules: [</span><br><span class="line">      &#123;</span><br><span class="line">        test: &#x2F;\.css$&#x2F;,</span><br><span class="line">        &#x2F;&#x2F; 多个转换器使用时，需要按照倒序的写法</span><br><span class="line">        use: [&#39;style-loader&#39;, &#39;css-loader&#39;]</span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="四、引入scss样式"><a href="#四、引入scss样式" class="headerlink" title="四、引入scss样式"></a>四、引入scss样式</h2><p>除了 style-loader | css-loader 之外还需要 sass-loader | node-sass(这玩意安装可能会想死)</p>
+<h2 id="五、引入less样式"><a href="#五、引入less样式" class="headerlink" title="五、引入less样式"></a>五、引入less样式</h2><p>除了 style-loader | css-loader 之外还需要 less-loader | less</p>
+<h2 id="六、引入图片"><a href="#六、引入图片" class="headerlink" title="六、引入图片"></a>六、引入图片</h2><p>使用 url-loader 的转换器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">resolve: &#123;</span><br><span class="line"></span><br><span class="line">   &#x2F;&#x2F; 别名</span><br><span class="line"></span><br><span class="line">    alias: &#123;</span><br><span class="line"></span><br><span class="line">      &#39;@&#39;: path.resolve(__dirname, &#39;.&#x2F;src&#39;)</span><br><span class="line"></span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">   &#x2F;&#x2F; 自动解析的扩展</span><br><span class="line"></span><br><span class="line">    extensions: [&quot;.js&quot;, &quot;.json&quot;, &quot;.vue&quot;]</span><br><span class="line"></span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/02/22/webpack%E7%9A%84%E7%AE%80%E5%8D%95%E8%AE%A4%E8%AF%86/" data-id="ck6xkyfm30000y4uf8d6w6fxo" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2020/02/22/%E6%B7%B7%E5%90%88%E5%BC%80%E5%8F%91/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">混合开发</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0/">语言学习</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">正则表达式</a></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/NET/" rel="tag">.NET</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" rel="tag">正则表达式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB/" rel="tag">网络爬虫</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%A7%86%E9%A2%91%E6%95%99%E7%A8%8B/" rel="tag">视频教程</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/NET/" style="font-size: 10px;">.NET</a> <a href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" style="font-size: 10px;">正则表达式</a> <a href="/tags/%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB/" style="font-size: 10px;">网络爬虫</a> <a href="/tags/%E8%A7%86%E9%A2%91%E6%95%99%E7%A8%8B/" style="font-size: 10px;">视频教程</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/02/22/webpack%E7%9A%84%E7%AE%80%E5%8D%95%E8%AE%A4%E8%AF%86/">webpack的简单认识</a>
+          </li>
+        
+          <li>
+            <a href="/2020/02/22/%E6%B7%B7%E5%90%88%E5%BC%80%E5%8F%91/">混合开发</a>
+          </li>
+        
+          <li>
+            <a href="/2020/02/22/%E7%94%A8webpack%E6%90%AD%E5%BB%BAreact/">用webpack搭建react</a>
+          </li>
+        
+          <li>
+            <a href="/2020/02/22/%E5%88%9D%E8%AF%86react/">用webpack搭建react</a>
+          </li>
+        
+          <li>
+            <a href="/2020/02/21/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%9A%84%E6%90%AD%E5%BB%BA/">个人博客的搭建</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
