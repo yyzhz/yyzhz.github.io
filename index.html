@@ -64,43 +64,6 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-demo" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/02/22/demo/" class="article-date">
-  <time datetime="2020-02-22T12:15:25.000Z" itemprop="datePublished">2020-02-22</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/02/22/demo/">用webpack搭建react</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="wdnmd"><a href="#wdnmd" class="headerlink" title="wdnmd"></a>wdnmd</h1><p>wwwwww</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/02/22/demo/" data-id="ck7rq69f80000fkuf97e67rvw" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
     <article id="post-webpack的简单认识" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/02/22/webpack%E7%9A%84%E7%AE%80%E5%8D%95%E8%AE%A4%E8%AF%86/" class="article-date">
@@ -211,7 +174,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/02/22/webpack%E7%9A%84%E7%AE%80%E5%8D%95%E8%AE%A4%E8%AF%86/" data-id="ck7rq69fu0001fkufadvb6lb9" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/02/22/webpack%E7%9A%84%E7%AE%80%E5%8D%95%E8%AE%A4%E8%AF%86/" data-id="ck7rqlzxf0000ycufe5cq8l0v" class="article-share-link">Share</a>
       
       
     </footer>
@@ -321,7 +284,70 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/02/22/%E7%94%A8webpack%E6%90%AD%E5%BB%BAreact/" data-id="ck7rq69fx0003fkuf3t98a80p" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/02/22/%E7%94%A8webpack%E6%90%AD%E5%BB%BAreact/" data-id="ck7rqlzxq0003ycufgz4a2662" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-混合开发" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/02/22/%E6%B7%B7%E5%90%88%E5%BC%80%E5%8F%91/" class="article-date">
+  <time datetime="2020-02-22T12:15:25.000Z" itemprop="datePublished">2020-02-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/02/22/%E6%B7%B7%E5%90%88%E5%BC%80%E5%8F%91/">混合开发</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="一、NativeApp（原生App）"><a href="#一、NativeApp（原生App）" class="headerlink" title="一、NativeApp（原生App）"></a>一、NativeApp（原生App）</h3><p>纯工具类App</p>
+<p>特点？</p>
+<p>​    开发：由Native人员进心开发的 安卓（android） 苹果（IOS）</p>
+<p>​    语言：Android（Java+XML）        IOS（Objective-c / Swift + XML）</p>
+<p>​    更新维护：版本更新、打补丁包 都得需要用户从app store里面进行下载</p>
+<p>​    使用：必须去app-store里面进行下载更新才能使用软件</p>
+<p>​    优点：运行稳定 用户黏度高 安装使用比较方便 性能高 流畅度高 可以操作手机硬件接口</p>
+<p>​    缺点：不能跨平台开发 必须开发两套代码（Android+IOS）</p>
+<h3 id="二、WebApp（移动M站）"><a href="#二、WebApp（移动M站）" class="headerlink" title="二、WebApp（移动M站）"></a>二、WebApp（移动M站）</h3><p>特点：（凡是可以在移动端浏览器打开的网站都称之为WebApp）</p>
+<p>​    开发：H5前端开发工程师</p>
+<p>​    语言：html5+css3+js（框架）</p>
+<p>​    更新维护：直接无痕更新（需要注意浏览器缓存问题 缓存产生的是基于文件的路径）</p>
+<p>​    使用：无需下载 直接通过用户的手机浏览器打开使用即可</p>
+<p>​    优点：可以跨平台、用户黏度低、开发成本低、使用成本低、更新维护成本低</p>
+<p>​    缺点：不稳定 流畅度低 用户体验差 不能调用原生设备</p>
+<h3 id="三、Hybrid-App（混合App）"><a href="#三、Hybrid-App（混合App）" class="headerlink" title="三、Hybrid App（混合App）"></a>三、Hybrid App（混合App）</h3><p>核心技术：在native壳子中，通过webview，在webview中内嵌H5的页面即可。</p>
+<p>模式：</p>
+<p>​        原生主导的开发模式：</p>
+<p>​            整个app的大部分的界面都是由原生开发的，但是某一些的经常变动的页面由内嵌的H5页面实现的</p>
+<p>​        检测一下哪些是原生native应用，哪些是hybrid应用，主要是看看有没有内嵌的H5页面</p>
+<p>​        1.同类型的产品看包装的大小，如果小的话就是hybrid应用</p>
+<p>​            京东    淘宝</p>
+<p>​        2.android手机可以开启调试模式，显示布局界面，整个手机如果是native开发的，就会被线条划分。</p>
+<p>​        因为有些页面，可能没过几天就需要进行更新、变动。如activity活动页面，倘若native开发工程师去实现的话，就需要花费很长的时间。所以用H5页面内嵌到webview中，这样就可以提高效率了。并且很多公司都在使用这种开发模式。</p>
+<p>​        例如美团，我们可以在美团的app中，对于猫眼的这部分业务逻辑，我们可以内嵌早已经开发好的webapp，美团就不需要对猫眼这部分的业务逻辑进行重新构建了。</p>
+<p><strong>混合开发优缺点</strong></p>
+<p>混合开发集原生和HTML5两者的优点（及缺点）。 我们定义的混合应用程序是一种Web应用程序主要使用HTML5和JavaScript 构建而成， 然后封装在细薄的原生容器里面， 可以通过容器来访问原生平台功能。混合应用程序集两者之所长。如果现有的Web开发人员在优化JavaScript， 处理CSS从而设计漂亮布局及编写可在任何平台上运行的兼容HTML代码方面已成为行家里手， 现在就能构建功能复杂的移动应用程序， 并不牺牲很酷的原生功能。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/02/22/%E6%B7%B7%E5%90%88%E5%BC%80%E5%8F%91/" data-id="ck7rqlzxt0006ycuf2zki9lvi" class="article-share-link">Share</a>
       
       
     </footer>
@@ -526,70 +552,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/02/22/%E5%88%9D%E8%AF%86react/" data-id="ck7rq69gd000hfkufdy1n8hek" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-混合开发" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/02/22/%E6%B7%B7%E5%90%88%E5%BC%80%E5%8F%91/" class="article-date">
-  <time datetime="2020-02-22T12:15:25.000Z" itemprop="datePublished">2020-02-22</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/02/22/%E6%B7%B7%E5%90%88%E5%BC%80%E5%8F%91/">混合开发</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="一、NativeApp（原生App）"><a href="#一、NativeApp（原生App）" class="headerlink" title="一、NativeApp（原生App）"></a>一、NativeApp（原生App）</h3><p>纯工具类App</p>
-<p>特点？</p>
-<p>​    开发：由Native人员进心开发的 安卓（android） 苹果（IOS）</p>
-<p>​    语言：Android（Java+XML）        IOS（Objective-c / Swift + XML）</p>
-<p>​    更新维护：版本更新、打补丁包 都得需要用户从app store里面进行下载</p>
-<p>​    使用：必须去app-store里面进行下载更新才能使用软件</p>
-<p>​    优点：运行稳定 用户黏度高 安装使用比较方便 性能高 流畅度高 可以操作手机硬件接口</p>
-<p>​    缺点：不能跨平台开发 必须开发两套代码（Android+IOS）</p>
-<h3 id="二、WebApp（移动M站）"><a href="#二、WebApp（移动M站）" class="headerlink" title="二、WebApp（移动M站）"></a>二、WebApp（移动M站）</h3><p>特点：（凡是可以在移动端浏览器打开的网站都称之为WebApp）</p>
-<p>​    开发：H5前端开发工程师</p>
-<p>​    语言：html5+css3+js（框架）</p>
-<p>​    更新维护：直接无痕更新（需要注意浏览器缓存问题 缓存产生的是基于文件的路径）</p>
-<p>​    使用：无需下载 直接通过用户的手机浏览器打开使用即可</p>
-<p>​    优点：可以跨平台、用户黏度低、开发成本低、使用成本低、更新维护成本低</p>
-<p>​    缺点：不稳定 流畅度低 用户体验差 不能调用原生设备</p>
-<h3 id="三、Hybrid-App（混合App）"><a href="#三、Hybrid-App（混合App）" class="headerlink" title="三、Hybrid App（混合App）"></a>三、Hybrid App（混合App）</h3><p>核心技术：在native壳子中，通过webview，在webview中内嵌H5的页面即可。</p>
-<p>模式：</p>
-<p>​        原生主导的开发模式：</p>
-<p>​            整个app的大部分的界面都是由原生开发的，但是某一些的经常变动的页面由内嵌的H5页面实现的</p>
-<p>​        检测一下哪些是原生native应用，哪些是hybrid应用，主要是看看有没有内嵌的H5页面</p>
-<p>​        1.同类型的产品看包装的大小，如果小的话就是hybrid应用</p>
-<p>​            京东    淘宝</p>
-<p>​        2.android手机可以开启调试模式，显示布局界面，整个手机如果是native开发的，就会被线条划分。</p>
-<p>​        因为有些页面，可能没过几天就需要进行更新、变动。如activity活动页面，倘若native开发工程师去实现的话，就需要花费很长的时间。所以用H5页面内嵌到webview中，这样就可以提高效率了。并且很多公司都在使用这种开发模式。</p>
-<p>​        例如美团，我们可以在美团的app中，对于猫眼的这部分业务逻辑，我们可以内嵌早已经开发好的webapp，美团就不需要对猫眼这部分的业务逻辑进行重新构建了。</p>
-<p><strong>混合开发优缺点</strong></p>
-<p>混合开发集原生和HTML5两者的优点（及缺点）。 我们定义的混合应用程序是一种Web应用程序主要使用HTML5和JavaScript 构建而成， 然后封装在细薄的原生容器里面， 可以通过容器来访问原生平台功能。混合应用程序集两者之所长。如果现有的Web开发人员在优化JavaScript， 处理CSS从而设计漂亮布局及编写可在任何平台上运行的兼容HTML代码方面已成为行家里手， 现在就能构建功能复杂的移动应用程序， 并不牺牲很酷的原生功能。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/02/22/%E6%B7%B7%E5%90%88%E5%BC%80%E5%8F%91/" data-id="ck7rq69ge000ifkuf7nj8bxew" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/02/22/%E5%88%9D%E8%AF%86react/" data-id="ck7rqlzy0000hycuf70xs2c2z" class="article-share-link">Share</a>
       
       
     </footer>
@@ -658,7 +621,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/02/21/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%9A%84%E6%90%AD%E5%BB%BA/" data-id="ck7rq69g00006fkuf4a7u93a2" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/02/21/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%9A%84%E6%90%AD%E5%BB%BA/" data-id="ck7rqlzxn0001ycuf97c17m4y" class="article-share-link">Share</a>
       
       
     </footer>
@@ -701,7 +664,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/02/21/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/" data-id="ck7rq69fw0002fkuf0omnbr7u" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/02/21/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/" data-id="ck7rqlzxp0002ycuf4o7vcupk" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/NET/" rel="tag">.NET</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" rel="tag">正则表达式</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB/" rel="tag">网络爬虫</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%A7%86%E9%A2%91%E6%95%99%E7%A8%8B/" rel="tag">视频教程</a></li></ul>
@@ -765,10 +728,6 @@
       <ul>
         
           <li>
-            <a href="/2020/02/22/demo/">用webpack搭建react</a>
-          </li>
-        
-          <li>
             <a href="/2020/02/22/webpack%E7%9A%84%E7%AE%80%E5%8D%95%E8%AE%A4%E8%AF%86/">webpack的简单认识</a>
           </li>
         
@@ -777,11 +736,15 @@
           </li>
         
           <li>
+            <a href="/2020/02/22/%E6%B7%B7%E5%90%88%E5%BC%80%E5%8F%91/">混合开发</a>
+          </li>
+        
+          <li>
             <a href="/2020/02/22/%E5%88%9D%E8%AF%86react/">初识react</a>
           </li>
         
           <li>
-            <a href="/2020/02/22/%E6%B7%B7%E5%90%88%E5%BC%80%E5%8F%91/">混合开发</a>
+            <a href="/2020/02/21/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%9A%84%E6%90%AD%E5%BB%BA/">个人博客的搭建</a>
           </li>
         
       </ul>
