@@ -43,7 +43,7 @@ const baseConfig = {
 
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.join(__dirname, "../public/index.html"),
+      template: path.join(__dirname, "../index.html"),
       minify: {
         collapseWhitespace: true, //去空格
         removeComments: true, // 去注释
