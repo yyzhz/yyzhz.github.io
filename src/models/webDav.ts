@@ -2,7 +2,7 @@ import { getLocalStorage, setLocalStorage } from "@utils";
 import { AuthType, FileStat, createClient } from "webdav";
 
 export const webDavClient = () => {
-  return createClient(`http://${window.location.hostname}/dav/blog/`, {
+  return createClient(`http://${window.location.host}/dav/blog/`, {
     authType: AuthType.Auto,
     username: "2816400563@qq.com",
     password: "apd8bcutg3a2jhfb",
