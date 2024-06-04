@@ -3,7 +3,7 @@ import { AuthType, FileStat, createClient } from "webdav";
 
 export const webDavClient = () => {
   return createClient("http://127.0.0.1:8080/dav/blog/", {
-    authType: AuthType.Digest,
+    authType: AuthType.Auto,
     username: "2816400563@qq.com",
     password: "apd8bcutg3a2jhfb",
   });
